@@ -23,6 +23,7 @@ public class FirstTest {
 
         // Test steps
         WebDriver driver = new FirefoxDriver();
+
         driver.manage().window().maximize();
         driver.get("https://administrator:123asdQ@10.10.3.229:8006/apprecovery/admin");
         //driver.findElement(By.xpath("//button[contains(@class, 'fr')]")).click();
