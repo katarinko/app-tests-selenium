@@ -5,16 +5,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by root on 14.12.14.
  */
 public class PandoraStoresTests {
-    
+
+    WebDriver driver;
+
+    @BeforeClass
+    public void setUp() {
+        driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+    }
+
     @Test
     public void checkStoresInKiev() {
         // Test data
@@ -25,8 +36,6 @@ public class PandoraStoresTests {
         };
 
         // Test steps
-        WebDriver driver = new FirefoxDriver();
-        driver.manage().window().maximize();
         driver.get("http://www.pandora.net/uk-ua");
         driver.findElement(By.linkText("МАГАЗИНИ")).click();
         driver.findElement(By.cssSelector(".bullet.closePandoraDialogOther")).click();
@@ -46,10 +55,30 @@ public class PandoraStoresTests {
         }
 
     }
+    @Test
+    public void checkNamistinki() {
+
+        //Test steps
+        driver.get("http://www.pandora.net/uk-ua");
+        driver.findElement(By.xpath("//span[text()='НАМИСТИНИ']")).click();
+        driver.findElement(By.xpath("//span[text()='Дивіться усі підвіски']")).click();
+        driver.findElement(By.cssSelector(".bullet.closePandoraDialogOther")).click();
+        selectMetal("Срібло");
+
+    }
+
+    private void selectMetal(String type) {
+        driver.findElement(By.xpath("//div[@id='filter-metal-dropdown']//span[@class='bullet']")).click();
+        driver.findElement(By.xpath("//div[@id='filter-metal-dropdown']//a[contains(text(), '" + type + "')]")).click();
+
+    }
+
+    private void closePandoraDialog() {
+
+
+    }
 
 
 
 }
-
-
 
