@@ -36,7 +36,7 @@ public class FirstTest {
 
 
         // Assertion
-        //assertTrue(driver.findElement(By.cssSelector(".gb_e.gb_f")).getText().equals("+Ekaterina"));
-        //driver.quit();
+        assertTrue(driver.findElement(By.cssSelector(".gb_e.gb_f")).getText().equals("+Ekaterina"));
+        driver.quit();
     }
 }
