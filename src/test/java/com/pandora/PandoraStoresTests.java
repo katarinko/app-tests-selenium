@@ -17,11 +17,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 
-import java.io.File;
-import java.util.Date;
-import jxl.*;
-
-
 /**
  * Created by root on 14.12.14.
  */
@@ -85,10 +80,7 @@ public class PandoraStoresTests {
     }
 
 
-    @Test
-    public void parametricTest() {
 
-    }
 
     private String getItemPrice() {
         return driver.findElement(By.xpath("//div[@class='price']/p")).getText();
